@@ -16,5 +16,6 @@
 
     <modules>
         <module>HelloWorld</module>
+        <module>QuickSort</module>
     </modules>
 </project>

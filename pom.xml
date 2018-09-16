@@ -15,5 +15,6 @@
     <modules>
         <module>java</module>
         <module>kotlin</module>
+        <module>report_formatter</module>
     </modules>
 </project>
