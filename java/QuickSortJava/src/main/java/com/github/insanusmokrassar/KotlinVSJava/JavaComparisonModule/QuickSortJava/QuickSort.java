@@ -14,10 +14,13 @@ public class QuickSort {
     private static final String testName = "QuickSortKotlin#Java";
     public static Random random = new Random();
     private static final int countOfElements = 1000;
-    private static final Integer[] ascendRange = new Integer[countOfElements];
-    private static final Integer[] descendRange = new Integer[countOfElements];
+    private Integer[] ascendRange;
+    private Integer[] descendRange;
 
-    private static void fillArrays() {
+    public QuickSort(Integer countOfElements) {
+        ascendRange = new Integer[countOfElements];
+        descendRange = new Integer[countOfElements];
+
         for (int i = 0; i < countOfElements; i++) {
             ascendRange[i] = i;
             descendRange[i] = countOfElements - i - 1;
@@ -25,12 +28,20 @@ public class QuickSort {
     }
 
     public static void main(String[] args) {
-        fillArrays();
+        int countOfElements;
+        try {
+            countOfElements = Integer.parseInt(args[0]);
+        } catch (Exception e) {
+            countOfElements = QuickSort.countOfElements;
+        }
+
+        QuickSort test = new QuickSort(countOfElements);
+
         List<LogPoint> points = new ArrayList<>();
         points.add(new LogPoint(testName, START_TEST, System.currentTimeMillis()));
-        QuickSorter.sort(ascendRange);
+        QuickSorter.sort(test.ascendRange);
         points.add(new LogPoint(testName, "Ascend sorted", System.currentTimeMillis()));
-        QuickSorter.sort(descendRange);
+        QuickSorter.sort(test.descendRange);
         points.add(new LogPoint(testName, "Descend sorted", System.currentTimeMillis()));
         points.add(new LogPoint(testName, COMPLETE_TEST, System.currentTimeMillis()));
         TestDataFormatterKt.printPoints(points);
