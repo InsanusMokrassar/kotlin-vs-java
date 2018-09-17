@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.github.insanusmokrassar.KotlinVSJava.KotlinComparisonModule</groupId>
-    <artifactId>HelloWorld</artifactId>
+    <artifactId>QuickSort</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
@@ -71,6 +71,7 @@
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+
         <dependency>
             <groupId>com.github.insanusmokrassar.KotlinVSJava</groupId>
             <artifactId>report_formatter</artifactId>

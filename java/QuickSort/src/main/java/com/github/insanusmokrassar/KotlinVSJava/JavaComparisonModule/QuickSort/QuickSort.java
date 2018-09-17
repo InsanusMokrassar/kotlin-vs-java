@@ -21,8 +21,6 @@ public class QuickSort {
     private static void fillArrays() {
         for (int i = 0; i < countOfElements; i++) {
             ascendRange[i] = i;
-        }
-        for (int i = 0; i < countOfElements; i++) {
             descendRange[i] = countOfElements - i - 1;
         }
     }

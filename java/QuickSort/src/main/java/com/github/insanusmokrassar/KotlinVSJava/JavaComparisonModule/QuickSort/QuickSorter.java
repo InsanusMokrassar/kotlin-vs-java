@@ -16,7 +16,7 @@ public class QuickSorter {
                 continue;
             }
             Integer current = source[i];
-            if (main.compareTo(current) >= 0) {
+            if (main >= current) {
                 leftList.add(current);
             } else {
                 rightList.add(current);
