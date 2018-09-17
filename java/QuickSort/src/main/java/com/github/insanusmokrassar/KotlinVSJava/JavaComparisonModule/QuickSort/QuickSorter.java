@@ -3,8 +3,11 @@ package com.github.insanusmokrassar.KotlinVSJava.JavaComparisonModule.QuickSort;
 import java.util.*;
 
 public class QuickSorter {
-    public Integer[] sort(Integer[] source) {
-        int position = QuickSort.random.nextInt(source.length - 2);
+    public static Integer[] sort(Integer[] source) {
+        if (source.length < 2) {
+            return source;
+        }
+        int position = QuickSort.random.nextInt(1 + source.length - 2);
         List<Integer> leftList = new ArrayList<>();
         List<Integer> rightList = new ArrayList<>();
         Integer main = source[position];
@@ -13,16 +16,14 @@ public class QuickSorter {
                 continue;
             }
             Integer current = source[i];
-            if (main.compareTo(current) < 0) {
+            if (main.compareTo(current) >= 0) {
                 leftList.add(current);
             } else {
                 rightList.add(current);
             }
         }
-        Integer[] left = new Integer[leftList.size()];
-        leftList.toArray(left);
-        Integer[] right = new Integer[rightList.size()];
-        rightList.toArray(right);
+        Integer[] left = leftList.toArray(new Integer[0]);
+        Integer[] right = rightList.toArray(new Integer[0]);
         
         if (left.length > 1) {
             left = sort(left);
@@ -35,8 +36,8 @@ public class QuickSorter {
         Integer[] result = new Integer[source.length];
 
         System.arraycopy(left, 0, result, 0, left.length);
-        result[position] = main;
-        System.arraycopy(right, 0, result, position + 1, right.length);
+        result[left.length] = main;
+        System.arraycopy(right, 0, result, left.length + 1, right.length);
         
         return result;
     }
