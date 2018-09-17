@@ -26,16 +26,20 @@ fun sort(source: Array<Int>): Array<Int> {
         }
     }
 
-    var left = leftList.toTypedArray()
-    var right = rightList.toTypedArray()
+    val left = leftList.toTypedArray()
+    val right = rightList.toTypedArray()
 
-    if (left.size > 1) {
-        left = sort(left)
-    }
-
-    if (right.size > 1) {
-        right = sort(right)
-    }
-
-    return left.plus(main).plus(right)
+    return arrayOf(
+        *if (left.size > 1) {
+            sort(left)
+        } else {
+            left
+        },
+        main,
+        *if (right.size > 1) {
+            sort(right)
+        } else {
+            right
+        }
+    )
 }

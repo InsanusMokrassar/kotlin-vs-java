@@ -7,21 +7,25 @@ public class QuickSorter {
         if (source.length < 2) {
             return source;
         }
+
         int position = QuickSort.random.nextInt(1 + source.length - 2);
+
         List<Integer> leftList = new ArrayList<>();
         List<Integer> rightList = new ArrayList<>();
+
         Integer main = source[position];
+
         for (int i = 0; i < source.length; i++) {
-            if (i == position) {
-                continue;
-            }
-            Integer current = source[i];
-            if (main >= current) {
-                leftList.add(current);
-            } else {
-                rightList.add(current);
+            if (i != position) {
+                Integer current = source[i];
+                if (main >= current) {
+                    leftList.add(current);
+                } else {
+                    rightList.add(current);
+                }
             }
         }
+
         Integer[] left = leftList.toArray(new Integer[0]);
         Integer[] right = rightList.toArray(new Integer[0]);
         
