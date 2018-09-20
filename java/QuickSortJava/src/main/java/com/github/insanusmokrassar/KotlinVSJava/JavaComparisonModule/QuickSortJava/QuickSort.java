@@ -40,9 +40,9 @@ public class QuickSort {
         List<LogPoint> points = new ArrayList<>();
         points.add(new LogPoint(testName, START_TEST, System.currentTimeMillis()));
         QuickSorter.sort(test.ascendRange);
-        points.add(new LogPoint(testName, "Ascend sorted", System.currentTimeMillis()));
+        points.add(new LogPoint(testName, "Ascend", System.currentTimeMillis()));
         QuickSorter.sort(test.descendRange);
-        points.add(new LogPoint(testName, "Descend sorted", System.currentTimeMillis()));
+        points.add(new LogPoint(testName, "Descend", System.currentTimeMillis()));
         points.add(new LogPoint(testName, COMPLETE_TEST, System.currentTimeMillis()));
         TestDataFormatterKt.printPoints(points);
     }

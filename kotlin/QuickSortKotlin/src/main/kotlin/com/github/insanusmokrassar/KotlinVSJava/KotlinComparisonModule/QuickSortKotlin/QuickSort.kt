@@ -25,9 +25,9 @@ fun main(args: Array<String>) {
     val points = ArrayList<LogPoint>()
     points.add(LogPoint(testName, START_TEST))
     sort(ascendRange)
-    points.add(LogPoint(testName, "Ascend sorted"))
+    points.add(LogPoint(testName, "Ascend"))
     sort(descendRange)
-    points.add(LogPoint(testName, "Descend sorted"))
+    points.add(LogPoint(testName, "Descend"))
     points.add(LogPoint(testName, COMPLETE_TEST))
     printPoints(points)
 }
