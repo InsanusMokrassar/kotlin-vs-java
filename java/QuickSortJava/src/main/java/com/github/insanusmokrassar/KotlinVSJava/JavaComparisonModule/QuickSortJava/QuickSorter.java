@@ -1,7 +1,5 @@
 package com.github.insanusmokrassar.KotlinVSJava.JavaComparisonModule.QuickSortJava;
 
-import java.util.*;
-
 public class QuickSorter {
     public static Integer[] sort(Integer[] source) {
         if (source.length < 2) {
@@ -10,30 +8,46 @@ public class QuickSorter {
 
         int position = QuickSort.random.nextInt(1 + source.length - 2);
 
-        List<Integer> leftList = new ArrayList<>();
-        List<Integer> rightList = new ArrayList<>();
-
         Integer main = source[position];
+
+        int gte = 0;// count of elements grant or equal to main
+        int lt = 0;// count of elements less than main
 
         for (int i = 0; i < source.length; i++) {
             if (i != position) {
                 Integer current = source[i];
                 if (main >= current) {
-                    leftList.add(current);
+                    lt++;
                 } else {
-                    rightList.add(current);
+                    gte++;
                 }
             }
         }
 
-        Integer[] left = leftList.toArray(new Integer[0]);
-        Integer[] right = rightList.toArray(new Integer[0]);
-        
-        if (left.length > 1) {
+        Integer[] left = new Integer[lt];
+        Integer[] right = new Integer[gte];
+
+        lt = 0;// now it is index of array
+        gte = 0;// now it is index of array
+
+        for (int i = 0; i < source.length; i++) {
+            if (i != position) {
+                Integer current = source[i];
+                if (main >= current) {
+                    left[lt] = source[i];
+                    lt++;
+                } else {
+                    right[gte] = source[i];
+                    gte++;
+                }
+            }
+        }
+
+        if (lt > 1) {
             left = sort(left);
         }
         
-        if (right.length > 1) {
+        if (gte > 1) {
             right = sort(right);
         }
         

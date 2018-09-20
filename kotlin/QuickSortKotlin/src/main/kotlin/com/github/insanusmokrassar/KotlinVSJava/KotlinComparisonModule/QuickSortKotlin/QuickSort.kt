@@ -8,7 +8,7 @@ import java.util.Random
 
 var random = Random()
 
-private val testName = "QuickSortKotlin#Kotlin"
+private val testName = "QuickSort#Kotlin"
 private const val countOfElements = 1000
 
 

@@ -9,25 +9,41 @@ fun sort(source: Array<Int>): Array<Int> {
 
     val position = random.nextInt(1 + source.size - 2)
 
-    val leftList = ArrayList<Int>()
-    val rightList = ArrayList<Int>()
+    var lt: Int = 0
+    var gte: Int = 0
 
     val main = source[position]
+
+    source.forEachIndexed {
+        i, current ->
+        if (i != position) {
+            if (main >= current) {
+                lt++
+            } else {
+                gte++
+            }
+        }
+    }
+
+    val left = Array(lt) { 0 }
+    val right = Array(gte) { 0 }
+
+    lt = 0
+    gte = 0
 
     source.forEachIndexed {
         i, current ->
 
         if (i != position) {
             if (main >= current) {
-                leftList.add(current)
+                left[lt] = current
+                lt++
             } else {
-                rightList.add(current)
+                right[gte] = current
+                gte++
             }
         }
     }
-
-    val left = leftList.toTypedArray()
-    val right = rightList.toTypedArray()
 
     return arrayOf(
         *if (left.size > 1) {

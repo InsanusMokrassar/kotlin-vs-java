@@ -11,7 +11,7 @@ import static com.github.insanusmokrassar.KotlinVSJava.report_formatter.LogPoint
 import static com.github.insanusmokrassar.KotlinVSJava.report_formatter.LogPointKt.START_TEST;
 
 public class QuickSort {
-    private static final String testName = "QuickSortKotlin#Java";
+    private static final String testName = "QuickSort#Java";
     public static Random random = new Random();
     private static final int countOfElements = 1000;
     private Integer[] ascendRange;
