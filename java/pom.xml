@@ -17,5 +17,6 @@
     <modules>
         <module>HelloWorldJava</module>
         <module>QuickSortJava</module>
+        <module>AsyncSimpleLaunchJava</module>
     </modules>
 </project>
