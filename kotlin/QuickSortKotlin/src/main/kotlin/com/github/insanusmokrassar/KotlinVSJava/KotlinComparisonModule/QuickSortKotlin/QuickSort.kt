@@ -8,7 +8,7 @@ import java.util.Random
 
 var random = Random()
 
-private val testName = "QuickSort#Kotlin"
+private val testName = "QuickSort.Kotlin"
 private const val countOfElements = 1000
 
 
@@ -25,9 +25,9 @@ fun main(args: Array<String>) {
     val points = ArrayList<LogPoint>()
     points.add(LogPoint(testName, START_TEST))
     sort(ascendRange)
-    points.add(LogPoint(testName, "Ascend"))
+    points.add(LogPoint(testName, ASCEND_CONST))
     sort(descendRange)
-    points.add(LogPoint(testName, "Descend"))
+    points.add(LogPoint(testName, DESCEND_CONST))
     points.add(LogPoint(testName, COMPLETE_TEST))
     printPoints(points)
 }

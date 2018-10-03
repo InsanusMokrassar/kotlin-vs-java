@@ -20,6 +20,8 @@ mvn clean package
 
 pwdir=`pwd`
 
+points_results=()
+
 for i in ${!folders[*]}
 do
     folder=${folders[i]}
@@ -33,8 +35,23 @@ do
         current_folder_results[n]="`java -jar ./*jar-with-dependencies.jar | grep "[^[:space:]]*:[0-9]*:[^[:space:]]*"`"
     done
 
-    echo ${current_folder_results[*]}
+    points_results+=(${current_folder_results[*]})
 done
+
+test_names=()
+times=()
+pointnames=()
+
+for i in ${!points_results[*]}
+do
+    point=${points_results[i]}
+    test_names[i]="`echo $point | grep -o "^[^:]*"`"
+    times[i]="`echo $(echo $point | grep -o "[:][^:]*[:]") | grep -o "[0-9]*"`"
+    point_names[i]="`echo $point | grep -o "[^:]*$"`"
+    echo $point
+done
+
+
 
 cd $pwdir
 

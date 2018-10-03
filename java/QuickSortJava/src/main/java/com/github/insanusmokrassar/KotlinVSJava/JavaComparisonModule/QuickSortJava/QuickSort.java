@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import static com.github.insanusmokrassar.KotlinVSJava.report_formatter.LogPointKt.COMPLETE_TEST;
-import static com.github.insanusmokrassar.KotlinVSJava.report_formatter.LogPointKt.START_TEST;
+import static com.github.insanusmokrassar.KotlinVSJava.report_formatter.LogPointKt.*;
 
 public class QuickSort {
-    private static final String testName = "QuickSort#Java";
+    private static final String testName = "QuickSort.Java";
     public static Random random = new Random();
     private static final int countOfElements = 1000;
     private Integer[] ascendRange;
@@ -40,9 +39,9 @@ public class QuickSort {
         List<LogPoint> points = new ArrayList<>();
         points.add(new LogPoint(testName, START_TEST, System.currentTimeMillis()));
         QuickSorter.sort(test.ascendRange);
-        points.add(new LogPoint(testName, "Ascend", System.currentTimeMillis()));
+        points.add(new LogPoint(testName, ASCEND_CONST, System.currentTimeMillis()));
         QuickSorter.sort(test.descendRange);
-        points.add(new LogPoint(testName, "Descend", System.currentTimeMillis()));
+        points.add(new LogPoint(testName, DESCEND_CONST, System.currentTimeMillis()));
         points.add(new LogPoint(testName, COMPLETE_TEST, System.currentTimeMillis()));
         TestDataFormatterKt.printPoints(points);
     }
