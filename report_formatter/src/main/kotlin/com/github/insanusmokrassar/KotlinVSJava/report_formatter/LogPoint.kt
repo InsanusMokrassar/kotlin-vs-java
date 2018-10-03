@@ -7,4 +7,7 @@ data class LogPoint(
     val testName: String,
     val message: String,
     val time: Long = System.currentTimeMillis()
-)
+) {
+    // For Java
+    constructor(testName: String, message: String) : this(testName, message, System.currentTimeMillis())
+}

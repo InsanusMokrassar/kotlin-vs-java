@@ -1,8 +1,8 @@
 #!/bin/bash
 
 source ./BaseScripts/base.sh
-source ./BaseScripts/test.sh
-source ./BaseScripts/common_test_start.sh
+source BaseScripts/build_time_test.sh
+source BaseScripts/common_test.sh
 
 folders=(`extractFolders $@`)
 CALCULATION_TIMES=`extractCalculationTimes $@`

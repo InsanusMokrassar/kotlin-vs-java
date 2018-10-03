@@ -34,8 +34,6 @@ function calculateBuildTimeResults() {
     folders=$@
     results=()
 
-    currentFolder=`pwd`
-
     for i in ${!folders[*]}
     do
         results[i]="`runTests $CALCULATION_TIMES ${folders[i]}`"

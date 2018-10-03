@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./scripts_bridge.sh java/QuickSort/ kotlin/QuickSort/
+./scripts_bridge_build.sh java/QuickSort/ kotlin/QuickSort/

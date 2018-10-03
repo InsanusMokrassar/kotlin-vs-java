@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./scripts_bridge.sh java/HelloWorld/ kotlin/HelloWorld/
+./scripts_bridge_build.sh java/HelloWorld/ kotlin/HelloWorld/
