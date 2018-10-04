@@ -8,6 +8,7 @@ fun main(args: Array<String>) {
     val points = ArrayList<LogPoint>()
     points.add(LogPoint(testName, START_TEST))
     println("Hello World!")
+    points.add(LogPoint(testName, "print"))
     points.add(LogPoint(testName, COMPLETE_TEST))
     printPoints(points)
 }

@@ -16,6 +16,7 @@ public class HelloWorld {
         List<LogPoint> points = new ArrayList<>();
         points.add(new LogPoint(testName, START_TEST));
         System.out.println("Hello world!");
+        points.add(new LogPoint(testName, "print"));
         points.add(new LogPoint(testName, COMPLETE_TEST));
         printPoints(points);
     }
