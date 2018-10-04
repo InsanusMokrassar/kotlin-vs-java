@@ -7,6 +7,7 @@ folders=(`extractFolders $@`)
 testArgs=(`extractTestArgs $@`)
 CALCULATION_TIMES=`extractCalculationTimes $@`
 
+echo
 echo "Sum of calculations for each test: $CALCULATION_TIMES"
 echo "Chosen folders for tests:"
 
@@ -14,10 +15,13 @@ for i in ${folders[*]}
 do
     printf "    %s\n" $i
 done
+echo
 
 export CALCULATION_TIMES
 
-#mvn clean package
+echo Build project
+mvn clean package >> /dev/null
+echo Build completed
 
 pwdir=`pwd`
 
@@ -34,7 +38,7 @@ do
     for ((n=0; n < $CALCULATION_TIMES; n++))
     do
         output="`java -jar ./*jar-with-dependencies.jar ${testArgs[*]}`"
-        current_folder_results[n]="`echo $output | grep "[^[:space:]]*:[0-9]*:[^[:space:]]*"`"
+        current_folder_results[n]="`echo $output | grep -o "[^[:space:]]*:[0-9]*:[^[:space:]]*"`"
     done
 
     points_results+=(${current_folder_results[*]})
@@ -55,7 +59,7 @@ done
 unique_point_names=(`unique ${point_names[*]}`)
 unique_test_names=(`unique ${test_names[*]}`)
 
-printTableTitle "Point" "n" "${unique_test_names[*]}"
+printTableTitle "Point" "n" ${unique_test_names[*]} -c
 
 average_executions=()
 
@@ -101,7 +105,7 @@ do
             then
                 averages[$testNameIndex]="$pointTime"
             else
-                averages[$testNameIndex]="`average ${averages["$testNameIndex"]} $pointTime`"
+                averages[$testNameIndex]="$(round `average ${averages["$testNameIndex"]} $pointTime` 3)"
             fi
         done
 
@@ -113,7 +117,7 @@ done
 
 printf "\nAverage results:\n\n"
 
-printTableTitle "Point" "${unique_test_names[*]}"
+printTableTitle "Point" ${unique_test_names[*]} -c
 
 for point_index in ${!unique_point_names[*]}
 do

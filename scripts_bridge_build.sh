@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./BaseScripts/base.sh
+source BaseScripts/base.sh
 source BaseScripts/build_time_test.sh
 source BaseScripts/common_test.sh
 

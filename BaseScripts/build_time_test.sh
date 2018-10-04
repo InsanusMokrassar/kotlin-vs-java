@@ -18,7 +18,7 @@ function runTests() {
 }
 
 function printApproximateResultsTable() {
-    printTableTitle ${folders[*]}
+    printTableTitle ${folders[*]} -c
     foldersCount=${#folders[*]}
     approxs=()
 
@@ -48,7 +48,7 @@ function calculateBuildTimeResults() {
 }
 
 function printTableOfResults() {
-    printTableTitle "n" ${folders[*]}
+    printTableTitle "n" ${folders[*]} -c
 
     for ((i=0; i<CALCULATION_TIMES;i++))
     do

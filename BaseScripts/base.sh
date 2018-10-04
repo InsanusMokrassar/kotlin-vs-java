@@ -2,6 +2,9 @@
 
 MARKDOWN_EMPTY_TABLE_CELL="%s" #<div></div>
 
+TRUE="true"
+FALSE="false"
+
 function assert_success() {
     "${@}"
     local status=${?}
@@ -29,17 +32,49 @@ function printAsPartOfTable() {
 }
 
 function printTableTitle() {
-    printAsPartOfTable $@
+    isLeft="$FALSE"
+    isRight="$FALSE"
+
+    titles=($@)
+
+    alignSymbol=0
+
+    while [ -n "$1" ]
+    do
+        case "$1" in
+            -l) isLeft="$TRUE"; break ;;
+            -r) isRight="$TRUE"; break ;;
+            -c) isLeft="$TRUE"; isRight="$TRUE"; break ;;
+        esac
+        let alignSymbol++
+        shift
+    done
+
+    titles=(${titles[*]:0:$alignSymbol} ${titles[*]:`expr $alignSymbol + 1`:${#titles[*]}})
+
+    printAsPartOfTable ${titles[*]}
 
     printf "|"
-    for title in $@
+    for title in ${titles[*]}
     do
-        printf " "
+        let titleLength--
+        if [ "$isLeft" == "$TRUE" ]
+        then
+            printf ":"
+        else
+            printf " "
+        fi
         for ((i=0; i<${#title}; i++))
         do
             printf "-"
         done
-        printf " |"
+        if [ "$isRight" == "$TRUE" ]
+        then
+            printf ":"
+        else
+            printf " "
+        fi
+        printf "|"
     done
     printf "\n"
 }
