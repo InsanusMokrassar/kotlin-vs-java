@@ -6,11 +6,10 @@ fun sort(source: Array<Int>): Array<Int> {
     }
 
     val position = random.nextInt(1 + source.size - 2)
+    val main = source[position]
 
     var lt: Int = 0
     var gte: Int = 0
-
-    val main = source[position]
 
     source.forEachIndexed {
         i, current ->
