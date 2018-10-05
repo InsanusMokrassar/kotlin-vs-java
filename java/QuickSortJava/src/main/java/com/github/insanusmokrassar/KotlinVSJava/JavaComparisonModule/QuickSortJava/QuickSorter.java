@@ -34,10 +34,10 @@ public class QuickSorter {
             if (i != position) {
                 Integer current = source[i];
                 if (main >= current) {
-                    left[lt] = source[i];
+                    left[lt] = current;
                     lt++;
                 } else {
-                    right[gte] = source[i];
+                    right[gte] = current;
                     gte++;
                 }
             }

@@ -20,7 +20,7 @@ echo
 export CALCULATION_TIMES
 
 echo Build project
-mvn clean package >> /dev/null
+assert_success mvn clean package >> /dev/null
 echo Build completed
 
 pwdir=`pwd`
@@ -31,7 +31,7 @@ for i in ${!folders[*]}
 do
     folder=${folders[i]}
 
-    assert_success cd "$pwdir/$folder/target/"
+    assert_success cd "$pwdir/${folder}target/"
 
     current_folder_results=()
 
