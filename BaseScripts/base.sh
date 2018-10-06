@@ -46,7 +46,7 @@ function checkFlag() {
         shift
     done
 
-    echo "$flag"
+    echo "$isFlag"
 }
 
 function printTableTitle() {

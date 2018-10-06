@@ -11,27 +11,38 @@ fun sort(source: Array<Int>, from: Int = 0, to: Int = source.size) {
 
     val main = source[mainIndex]
 
-    var i = from
+    var leftIndex = from
 
-    while (i < mainIndex) {
-        val current = source[i]
+    while (leftIndex < mainIndex) {
+        val current = source[leftIndex]
         if (current >= main) {
             if (rightIndex == mainIndex) {
                 source[rightIndex] = current
-                source[i] = source[mainIndex - 1]
-                source[mainIndex - 1] = main
+                source[leftIndex] = source[mainIndex - 1]
 
                 mainIndex--
-                rightIndex--
+                source[mainIndex] = main
             } else {
                 val right = source[rightIndex]
                 source[rightIndex] = current
-                source[i] = right
-
-                rightIndex--
+                source[leftIndex] = right
             }
+            rightIndex--
         } else {
-            i++
+            leftIndex++
+        }
+    }
+
+    while (mainIndex < rightIndex) {
+        val current = source[rightIndex]
+        if (current < main) {
+            source[mainIndex] = current
+            source[rightIndex] = source[mainIndex + 1]
+
+            mainIndex++
+            source[mainIndex] = main
+        } else {
+            rightIndex--
         }
     }
 

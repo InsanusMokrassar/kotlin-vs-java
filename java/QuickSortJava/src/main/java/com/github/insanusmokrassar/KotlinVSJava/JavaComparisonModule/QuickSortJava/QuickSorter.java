@@ -17,27 +17,38 @@ public class QuickSorter {
 
         int main = source[mainIndex];
 
-        int i = from;
+        int leftIndex = from;
 
-        while (i < mainIndex) {
-            int current = source[i];
+        while (leftIndex < mainIndex) {
+            int current = source[leftIndex];
             if (current >= main) {
                 if (rightIndex == mainIndex) {
                     source[rightIndex] = current;
-                    source[i] = source[mainIndex - 1];
-                    source[mainIndex - 1] = main;
+                    source[leftIndex] = source[mainIndex - 1];
 
                     mainIndex--;
-                    rightIndex--;
+                    source[mainIndex] = main;
                 } else {
                     int right = source[rightIndex];
                     source[rightIndex] = current;
-                    source[i] = right;
-
-                    rightIndex--;
+                    source[leftIndex] = right;
                 }
+                rightIndex--;
             } else {
-                i++;
+                leftIndex++;
+            }
+        }
+
+        while (mainIndex < rightIndex) {
+            int current = source[rightIndex];
+            if (current < main) {
+                source[mainIndex] = current;
+                source[rightIndex] = source[mainIndex + 1];
+
+                mainIndex++;
+                source[mainIndex] = main;
+            } else {
+                rightIndex--;
             }
         }
 
