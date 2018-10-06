@@ -13,8 +13,8 @@ public class QuickSort {
     private static final String testName = "QuickSort.Java";
     public static Random random = new Random();
     private static final int countOfElements = 1000;
-    private Integer[] ascendRange;
-    private Integer[] descendRange;
+    private final Integer[] ascendRange;
+    private final Integer[] descendRange;
 
     public QuickSort(Integer countOfElements) {
         ascendRange = new Integer[countOfElements];

@@ -17,6 +17,5 @@
     <modules>
         <module>HelloWorldKotlin</module>
         <module>QuickSortKotlin</module>
-        <module>QuickSortNullableKotlin</module>
     </modules>
 </project>

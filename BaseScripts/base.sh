@@ -31,6 +31,24 @@ function printAsPartOfTable() {
     printf "\n"
 }
 
+function checkFlag() {
+    flag="$1"
+
+    shift
+
+    isFlag="$FALSE"
+
+    while [ -n "$1" ]
+    do
+        case "$1" in
+            "$flag") isFlag="$TRUE"; break ;;
+        esac
+        shift
+    done
+
+    echo "$flag"
+}
+
 function printTableTitle() {
     isLeft="$FALSE"
     isRight="$FALSE"

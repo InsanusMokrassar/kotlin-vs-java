@@ -1,58 +1,40 @@
 package com.github.insanusmokrassar.KotlinVSJava.KotlinComparisonModule.QuickSortKotlin
 
-fun sort(source: Array<Int>): Array<Int> {
-    if (source.size < 2) {
-        return source
+fun sort(source: Array<Int>, from: Int = 0, to: Int = source.size) {
+    if (to - from < 2) {
+        return
     }
 
-    val position = random.nextInt(1 + source.size - 2)
-    val main = source[position]
+    var rightIndex = to - 1
 
-    var lt: Int = 0
-    var gte: Int = 0
+    var mainIndex = random.nextInt(to - from - 1) + from
 
-    source.forEachIndexed {
-        i, current ->
-        if (i != position) {
-            if (main >= current) {
-                lt++
+    val main = source[mainIndex]
+
+    var i = from
+
+    while (i < mainIndex) {
+        val current = source[i]
+        if (current >= main) {
+            if (rightIndex == mainIndex) {
+                source[rightIndex] = current
+                source[i] = source[mainIndex - 1]
+                source[mainIndex - 1] = main
+
+                mainIndex--
+                rightIndex--
             } else {
-                gte++
+                val right = source[rightIndex]
+                source[rightIndex] = current
+                source[i] = right
+
+                rightIndex--
             }
+        } else {
+            i++
         }
     }
 
-    val left = Array(lt) { 0 }
-    val right = Array(gte) { 0 }
-
-    lt = 0
-    gte = 0
-
-    source.forEachIndexed {
-        i, current ->
-
-        if (i != position) {
-            if (main >= current) {
-                left[lt] = current
-                lt++
-            } else {
-                right[gte] = current
-                gte++
-            }
-        }
-    }
-
-    return arrayOf(
-        *if (left.size > 1) {
-            sort(left)
-        } else {
-            left
-        },
-        main,
-        *if (right.size > 1) {
-            sort(right)
-        } else {
-            right
-        }
-    )
+    sort(source, from, mainIndex)
+    sort(source, mainIndex + 1, to)
 }

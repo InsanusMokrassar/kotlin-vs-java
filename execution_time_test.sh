@@ -6,6 +6,7 @@ source ./BaseScripts/common_test.sh
 folders=(`extractFolders $@`)
 testArgs=(`extractTestArgs $@`)
 CALCULATION_TIMES=`extractCalculationTimes $@`
+skipPackage=`checkFlag -s $@`
 
 echo
 echo "Sum of calculations for each test: $CALCULATION_TIMES"
@@ -19,9 +20,14 @@ echo
 
 export CALCULATION_TIMES
 
-echo Build project
-assert_success mvn clean package >> /dev/null
-echo Build completed
+if [ "$skipPackage" == "$FALSE" ]
+then
+    echo Build project
+    assert_success mvn clean package >> /dev/null
+    echo Build completed
+else
+    echo Skip build
+fi
 
 pwdir=`pwd`
 

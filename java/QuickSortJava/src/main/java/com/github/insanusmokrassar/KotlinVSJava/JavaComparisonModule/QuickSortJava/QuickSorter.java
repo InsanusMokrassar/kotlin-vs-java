@@ -1,62 +1,47 @@
 package com.github.insanusmokrassar.KotlinVSJava.JavaComparisonModule.QuickSortJava;
 
 public class QuickSorter {
-    public static Integer[] sort(Integer[] source) {
-        if (source.length < 2) {
-            return source;
+    public static void sort(Integer[] source) {// to is exclude
+        sort(source, 0, source.length);
+    }
+
+
+    public static void sort(Integer[] source, int from, int to) {// to is exclude
+        if (to - from < 2) {
+            return;
         }
 
-        int position = QuickSort.random.nextInt(1 + source.length - 2);
+        int rightIndex = to - 1;
 
-        Integer main = source[position];
+        int mainIndex = QuickSort.random.nextInt(to - from - 1) + from;
 
-        int gte = 0;// count of elements grant or equal to main
-        int lt = 0;// count of elements less than main
+        int main = source[mainIndex];
 
-        for (int i = 0; i < source.length; i++) {
-            if (i != position) {
-                Integer current = source[i];
-                if (main >= current) {
-                    lt++;
+        int i = from;
+
+        while (i < mainIndex) {
+            int current = source[i];
+            if (current >= main) {
+                if (rightIndex == mainIndex) {
+                    source[rightIndex] = current;
+                    source[i] = source[mainIndex - 1];
+                    source[mainIndex - 1] = main;
+
+                    mainIndex--;
+                    rightIndex--;
                 } else {
-                    gte++;
+                    int right = source[rightIndex];
+                    source[rightIndex] = current;
+                    source[i] = right;
+
+                    rightIndex--;
                 }
+            } else {
+                i++;
             }
         }
 
-        Integer[] left = new Integer[lt];
-        Integer[] right = new Integer[gte];
-
-        lt = 0;// now it is index of array
-        gte = 0;// now it is index of array
-
-        for (int i = 0; i < source.length; i++) {
-            if (i != position) {
-                Integer current = source[i];
-                if (main >= current) {
-                    left[lt] = current;
-                    lt++;
-                } else {
-                    right[gte] = current;
-                    gte++;
-                }
-            }
-        }
-
-        if (lt > 1) {
-            left = sort(left);
-        }
-        
-        if (gte > 1) {
-            right = sort(right);
-        }
-        
-        Integer[] result = new Integer[source.length];
-
-        System.arraycopy(left, 0, result, 0, left.length);
-        result[left.length] = main;
-        System.arraycopy(right, 0, result, left.length + 1, right.length);
-        
-        return result;
+        sort(source, from, mainIndex);
+        sort(source, mainIndex + 1, to);
     }
 }
