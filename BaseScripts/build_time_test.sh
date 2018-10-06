@@ -11,7 +11,7 @@ function runTests() {
 
     for ((i=0; i<CALCULATION_TIMES ; i++)); do
         # result[i]="$i.1"
-        result[i]=`(echo $(mvn clean package | grep -o "Total time: [0-9.]* s") | grep -o [0-9.]*)`
+        result[i]=`(echo $(assert_success mvn clean package | grep -o "Total time: [0-9.]* s") | grep -o [0-9.]*)`
     done
 
     echo ${result[*]}
