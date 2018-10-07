@@ -18,5 +18,6 @@
         <module>HelloWorldKotlin</module>
         <module>QuickSortKotlin</module>
         <module>ImageHandlingKotlin</module>
+        <module>ContactBookKotlin</module>
     </modules>
 </project>
