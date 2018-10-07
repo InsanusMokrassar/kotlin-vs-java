@@ -17,5 +17,6 @@
     <modules>
         <module>HelloWorldJava</module>
         <module>QuickSortJava</module>
+        <module>ImageHandlingJava</module>
     </modules>
 </project>
