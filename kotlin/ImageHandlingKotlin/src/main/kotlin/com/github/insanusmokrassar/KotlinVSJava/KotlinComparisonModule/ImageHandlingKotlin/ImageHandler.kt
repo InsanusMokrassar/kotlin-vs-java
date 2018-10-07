@@ -62,6 +62,7 @@ private fun Raster.isTransparent(x: Int, y: Int): Boolean {
         checkArray[0] = 0
     }
 }
+private fun Raster.isTransparent(pair: Pair<Int, Int>) = isTransparent(pair.first, pair.second)
 
 private fun calculateSpriteRect(
     alphaRaster: Raster,
@@ -76,7 +77,7 @@ private fun calculateSpriteRect(
     while (chordsQueue.isNotEmpty()) {
         val current = chordsQueue.poll()
 
-        if (!alphaRaster.isTransparent(current.first, current.second)) {
+        if (!alphaRaster.isTransparent(current)) {
             rectangle.include(current)
 
             val leftBound = if (current.first > 0) {
@@ -135,6 +136,7 @@ private fun Collection<Rectangle>.unique(): Set<Rectangle> {
         }
         result.add(current)
     }
+
     return result
 }
 

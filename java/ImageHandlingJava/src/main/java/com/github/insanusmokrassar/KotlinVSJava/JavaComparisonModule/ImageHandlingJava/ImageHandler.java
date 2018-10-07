@@ -74,7 +74,6 @@ public class ImageHandler {
         checkArray[0] = 0;
         return isTransparent;
     }
-
     private static Boolean isTransparent(Raster raster, Map.Entry<Integer, Integer> pair) {
         return isTransparent(raster, pair.getKey(), pair.getValue());
     }
@@ -149,6 +148,7 @@ public class ImageHandler {
             }
             result.add(current);
         }
+
         return result;
     }
 
@@ -199,14 +199,9 @@ public class ImageHandler {
                     image.getAlphaRaster()
             );
 
-            for (Rectangle spriteRectangle : unique(spritesRectangles)) {
+            for (Rectangle rect : unique(spritesRectangles)) {
                 result.add(
-                        image.getSubimage(
-                                spriteRectangle.x,
-                                spriteRectangle.y,
-                                spriteRectangle.width,
-                                spriteRectangle.height
-                        )
+                        image.getSubimage(rect.x, rect.y, rect.width, rect.height)
                 );
             }
         }
