@@ -5,6 +5,7 @@ source ./BaseScripts/common_test.sh
 
 folders=(`extractFolders $@`)
 testArgs=(`extractTestArgs $@`)
+jvmArgs=(`extractJVMArgs $@`)
 CALCULATION_TIMES=`extractCalculationTimes $@`
 skipPackage=`checkFlag -s $@`
 
@@ -17,6 +18,9 @@ do
     printf "    %s\n" $i
 done
 echo
+
+printf "JVM args: %s\n" "${jvmArgs[*]}"
+printf "Execution args: %s\n" "${testArgs[*]}"
 
 export CALCULATION_TIMES
 
@@ -43,7 +47,7 @@ do
 
     for ((n=0; n < $CALCULATION_TIMES; n++))
     do
-        output="`java -jar ./*jar-with-dependencies.jar ${testArgs[*]}`"
+        output="`java -jar ${jvmArgs[*]} ./*jar-with-dependencies.jar ${testArgs[*]}`"
         current_folder_results[n]="`echo $output | grep -o "[^[:space:]]*:[0-9]*:[^[:space:]]*"`"
     done
 

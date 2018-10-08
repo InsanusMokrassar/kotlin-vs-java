@@ -40,11 +40,11 @@ public class ContactBook {
 
         List<ContactsBook> books = new ArrayList<>();
 
-        for (int i = 0; i < booksCount; i++) {
+        for (int it = 0; it < booksCount; it++) {
             ContactsBook book = new ContactsBook();
 
-            for (int contactIndex = 0; contactIndex < contactsPerBook; contactIndex++) {
-                final int index = (contactIndex * 2) - i;
+            for (int i = 0; i < contactsPerBook; i++) {
+                int index = (i * 2) - it;
 
                 book.add(
                         new Contact(
@@ -62,14 +62,14 @@ public class ContactBook {
         points.add(new LogPoint(testName, CONTACTS_BOOKS_FILLED));
 
         if (!books.isEmpty()) {
-            ContactsBook firstBook = books.get(0);
+            ContactsBook mainBook = books.get(0);
 
-            for (int i = 0; i < firstBook.size(); i++) {
-                Contact contact = firstBook.get(i);
+            for (int i = 0; i < mainBook.size(); i++) {
+                Contact contact = mainBook.get(i);
 
                 for (ContactsBook book : books) {
 
-                    if (book != firstBook) {
+                    if (!book.equals(mainBook)) {
                         if (book.indexOf(contact) > i) {
                             break;
                         }

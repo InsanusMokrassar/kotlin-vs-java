@@ -20,12 +20,26 @@ function extractTestArgs() {
     while [ -n "$1" ]
     do
         case "$1" in
-            -a) shift; freeArgs+="$1" ;;
+            -a) shift; freeArgs+=("$1") ;;
         esac
         shift
     done
 
     echo ${freeArgs[*]}
+}
+
+function extractJVMArgs() {
+    jvmArgs=()
+
+    while [ -n "$1" ]
+    do
+        case "$1" in
+            --jvm-args) shift; jvmArgs+=("$1") ;;
+        esac
+        shift
+    done
+
+    echo ${jvmArgs[*]}
 }
 
 function extractCalculationTimes() {
