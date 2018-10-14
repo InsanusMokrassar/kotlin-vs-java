@@ -26,11 +26,12 @@ fun main(args: Array<String>) {
 
     points.add(LogPoint(testName, START_TEST))
 
-    (0 until booksCount).map {
+    val books = ArrayList<ContactsBook>()
+
+    for (bookIndex in (0 until booksCount)) {
         ContactsBook().apply {
-            (0 until contactsPerBook).forEach {
-                i ->
-                val index = (i * 2) - it
+            for (contactIndex in (0 until contactsPerBook)) {
+                val index = (contactIndex * 2) - bookIndex
 
                 add(
                     Contact(
@@ -41,20 +42,21 @@ fun main(args: Array<String>) {
                     )
                 )
             }
+        }.also {
+            books.add(it)
         }
-    }.let {
-        books ->
-        points.add(LogPoint(testName, CONTACTS_BOOKS_FILLED))
-        books.firstOrNull() ?.let {
-            mainBook ->
-            mainBook.forEachIndexed {
-                i, contact ->
-                for (book in books) {
+    }
 
-                    if (book != mainBook) {
-                        if (book.indexOf(contact) > i) {
-                            break
-                        }
+    points.add(LogPoint(testName, CONTACTS_BOOKS_FILLED))
+    books.firstOrNull() ?.let {
+        mainBook ->
+        mainBook.forEachIndexed {
+            i, contact ->
+            for (book in books) {
+
+                if (book != mainBook) {
+                    if (book.indexOf(contact) > i) {
+                        break
                     }
                 }
             }
