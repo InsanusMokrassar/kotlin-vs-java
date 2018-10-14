@@ -19,8 +19,8 @@ fun main(args: Array<String>) {
         countOfElements
     }
 
-    val ascendRange = Array(countOfElements) { it }
-    val descendRange = Array(countOfElements) { countOfElements - it - 1 }
+    val ascendRange = IntArray(countOfElements) { it }
+    val descendRange = IntArray(countOfElements) { countOfElements - it - 1 }
 
     val points = ArrayList<LogPoint>()
     points.add(LogPoint(testName, START_TEST))

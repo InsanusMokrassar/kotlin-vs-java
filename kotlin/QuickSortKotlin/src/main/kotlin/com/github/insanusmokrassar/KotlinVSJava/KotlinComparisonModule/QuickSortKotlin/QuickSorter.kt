@@ -1,6 +1,6 @@
 package com.github.insanusmokrassar.KotlinVSJava.KotlinComparisonModule.QuickSortKotlin
 
-fun sort(source: Array<Int>, from: Int = 0, to: Int = source.size) {
+fun sort(source: IntArray, from: Int = 0, to: Int = source.size) {
     if (to - from < 2) {
         return
     }
