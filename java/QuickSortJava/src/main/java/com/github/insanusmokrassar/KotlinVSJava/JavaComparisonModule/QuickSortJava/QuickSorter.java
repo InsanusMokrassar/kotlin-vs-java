@@ -1,12 +1,12 @@
 package com.github.insanusmokrassar.KotlinVSJava.JavaComparisonModule.QuickSortJava;
 
 public class QuickSorter {
-    public static void sort(Integer[] source) {// to is exclude
+    public static void sort(int[] source) {// to is exclude
         sort(source, 0, source.length);
     }
 
 
-    public static void sort(Integer[] source, int from, int to) {// to is exclude
+    public static void sort(int[] source, int from, int to) {// to is exclude
         if (to - from < 2) {
             return;
         }
