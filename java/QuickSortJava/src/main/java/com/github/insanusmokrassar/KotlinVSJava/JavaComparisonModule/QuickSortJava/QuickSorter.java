@@ -6,7 +6,7 @@ public class QuickSorter {
     }
 
 
-    public static void sort(int[] source, int from, int to) {// to is exclude
+    public static void sort(int[] source, int from, int to) {
         if (to - from < 2) {
             return;
         }

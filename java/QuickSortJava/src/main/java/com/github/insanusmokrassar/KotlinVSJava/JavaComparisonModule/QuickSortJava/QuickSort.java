@@ -11,7 +11,7 @@ import static com.github.insanusmokrassar.KotlinVSJava.report_formatter.LogPoint
 
 public class QuickSort {
     private static final String testName = "QuickSort.Java";
-    public static Random random = new Random();
+    public final static Random random = new Random();
     private static final int countOfElements = 1000;
     private final int[] ascendRange;
     private final int[] descendRange;

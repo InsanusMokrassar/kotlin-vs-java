@@ -6,7 +6,7 @@ import java.lang.Exception
 import java.util.ArrayList
 import java.util.Random
 
-var random = Random()
+val random = Random()
 
 private val testName = "QuickSort.Kotlin"
 private const val countOfElements = 1000
