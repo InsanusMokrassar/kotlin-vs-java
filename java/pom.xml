@@ -19,5 +19,6 @@
         <module>QuickSortJava</module>
         <module>ImageHandlingJava</module>
         <module>ContactBookJava</module>
+        <module>NetworkEmulationJava</module>
     </modules>
 </project>
