@@ -19,5 +19,6 @@
         <module>QuickSortKotlin</module>
         <module>ImageHandlingKotlin</module>
         <module>ContactBookKotlin</module>
+        <module>NetworkEmulationKotlin</module>
     </modules>
 </project>
