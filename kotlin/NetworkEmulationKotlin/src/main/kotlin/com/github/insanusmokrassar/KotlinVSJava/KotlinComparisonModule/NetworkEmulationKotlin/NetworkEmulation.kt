@@ -34,7 +34,6 @@ fun main(args: Array<String>) {
     }
     points.add(LogPoint(testName, COMPLETE_TEST))
 
+    dispatcher.close()
     printPoints(points)
-
-    Runtime.getRuntime().exit(0)
 }

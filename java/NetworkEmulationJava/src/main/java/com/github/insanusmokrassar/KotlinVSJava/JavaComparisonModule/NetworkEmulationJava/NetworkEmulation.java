@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.*;
 
 import static com.github.insanusmokrassar.KotlinVSJava.report_formatter.LogPointKt.*;
+import static com.github.insanusmokrassar.KotlinVSJava.report_formatter.TestDataFormatterKt.printPoints;
 
 public class NetworkEmulation {
     private static final String testName = "NetworkEmulation.Java";
@@ -54,5 +55,8 @@ public class NetworkEmulation {
         points.add(new LogPoint(testName, ALL_TASKS_COMPLETED));
 
         points.add(new LogPoint(testName, COMPLETE_TEST));
+
+        executor.shutdown();
+        printPoints(points);
     }
 }

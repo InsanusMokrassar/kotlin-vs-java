@@ -20,7 +20,7 @@
         <kotlin.coroutines.version>1.0.1</kotlin.coroutines.version>
         <jar.version>3.0.2</jar.version>
         <gpg.passphraseServerId>bintray-insanusmokrassar-StandardRepository</gpg.passphraseServerId>
-        <main.class>${project.groupId}.${project.artifactId}.NetworkEmulationKotlinKt</main.class>
+        <main.class>${project.groupId}.${project.artifactId}.NetworkEmulationKt</main.class>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
