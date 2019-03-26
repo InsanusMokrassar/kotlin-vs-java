@@ -119,7 +119,33 @@ function average() {
 }
 
 function unique() {
-    printf '%s\n' "$@" | awk -v RS='[[:space:]]+' '!a[$0]++{printf "%s%s", $0, RT}'
+    result=()
+    while [ -n "$1" ]
+    do
+        isIn="`contains \"$1\" ${result[*]}`"
+        if [ "$isIn" == "$FALSE" ]
+        then
+            i=${#result[@]}
+            result[$i]="$1"
+        fi
+        shift
+    done
+    echo ${result[@]}
+}
+
+function contains() {
+    value=$1
+    shift
+    while [ -n "$1" ]
+    do
+        if [ "$1" == "$value"  ]
+        then
+            echo "$TRUE"
+            break
+        fi
+        shift
+    done
+    echo "$FALSE"
 }
 
 function extractTestName() {
