@@ -5,13 +5,10 @@ function runTests() {
     setIfNull CALCULATION_TIMES 10
     TEST_FOLDER=$2
 
-    cd $TEST_FOLDER
-
     result=()
 
     for ((i=0; i<CALCULATION_TIMES ; i++)); do
-        # result[i]="$i.1"
-        result[i]=`(echo $(assert_success mvn clean package | grep -o "Total time: [0-9.]* s") | grep -o [0-9.]*)`
+        result[i]=`(echo $(assert_success ./gradlew $TEST_FOLDER:clean $TEST_FOLDER:build | grep -o "BUILD SUCCESSFUL in [[:digit:]]*s") | grep -o [[:digit:]]*)`
     done
 
     echo ${result[*]}

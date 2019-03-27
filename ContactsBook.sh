@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./scripts_bridge_build.sh -f kotlin/ContactBookKotlin/ -f java/ContactBookJava/ $@
+./scripts_bridge_build.sh -f :KotlinComparisonModule:ContactBookKotlin -f :JavaComparisonModule:ContactBookJava $@
 echo
-./execution_time_test.sh -f kotlin/ContactBookKotlin/ -f java/ContactBookJava/ $@
+./execution_time_test.sh -f :KotlinComparisonModule:ContactBookKotlin -f :JavaComparisonModule:ContactBookJava $@

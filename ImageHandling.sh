@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./scripts_bridge_build.sh -f kotlin/ImageHandlingKotlin/ -f java/ImageHandlingJava/ $@
+./scripts_bridge_build.sh -f :KotlinComparisonModule:ImageHandlingKotlin -f :JavaComparisonModule:ImageHandlingJava $@
 echo
-./execution_time_test.sh -f kotlin/ImageHandlingKotlin/ -f java/ImageHandlingJava/ $@
+./execution_time_test.sh -f :KotlinComparisonModule:ImageHandlingKotlin -f :JavaComparisonModule:ImageHandlingJava $@

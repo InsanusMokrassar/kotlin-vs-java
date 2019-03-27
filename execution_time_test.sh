@@ -27,7 +27,7 @@ export CALCULATION_TIMES
 if [ "$skipPackage" == "$FALSE" ]
 then
     echo Build project
-    assert_success mvn clean package >> /dev/null
+    assert_success ./gradlew clean build >> /dev/null
     echo Build completed
 else
     echo Skip build
@@ -37,17 +37,17 @@ pwdir=`pwd`
 
 points_results=()
 
+export JAVA_OPTS="${jvmArgs[*]}"
+
 for i in ${!folders[*]}
 do
     folder=${folders[i]}
-
-    assert_success cd "$pwdir/${folder}target/"
 
     current_folder_results=()
 
     for ((n=0; n < $CALCULATION_TIMES; n++))
     do
-        output="`java -jar ${jvmArgs[*]} ./*jar-with-dependencies.jar ${testArgs[*]}`"
+        output="`./gradlew $folder:run -Pargs=\"${testArgs[*]}\"`"
         current_folder_results[n]="`echo $output | grep -o "[^[:space:]]*:[0-9]*:[^[:space:]]*"`"
     done
 

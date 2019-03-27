@@ -1,5 +1,5 @@
 #!/bin/bash
 
-./scripts_bridge_build.sh -f kotlin/QuickSortKotlin/ -f java/QuickSortJava/ $@
+./scripts_bridge_build.sh -f :KotlinComparisonModule:QuickSortKotlin -f :JavaComparisonModule:QuickSortJava $@
 echo
-./execution_time_test.sh -f kotlin/QuickSortKotlin/ -f java/QuickSortJava/ $@
+./execution_time_test.sh -f :KotlinComparisonModule:QuickSortKotlin -f :JavaComparisonModule:QuickSortJava $@
