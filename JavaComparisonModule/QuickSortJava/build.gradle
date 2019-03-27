@@ -1,0 +1,19 @@
+project.version = "1.0.0"
+project.group = "com.github.insanusmokrassar.JavaComparisonModule"
+
+buildscript {
+  repositories {
+    mavenLocal()
+    jcenter()
+    mavenCentral()
+  }
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+dependencies {
+  implementation project(":report_formatter")
+}
+
+mainClassName="${project.group}.${project.name}.QuickSort"
