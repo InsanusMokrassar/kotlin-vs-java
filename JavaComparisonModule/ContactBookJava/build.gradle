@@ -1,5 +1,8 @@
 project.version = "1.0.0"
-project.group = "com.github.insanusmokrassar.JavaComparisonModule"
+project.group = "com.github.insanusmokrassar.KotlinVSJava.JavaComparisonModule"
+
+apply plugin: 'java'
+apply plugin: 'application'
 
 buildscript {
   repositories {
@@ -8,9 +11,6 @@ buildscript {
     mavenCentral()
   }
 }
-
-apply plugin: 'java'
-apply plugin: 'application'
 
 dependencies {
   implementation project(":report_formatter")
