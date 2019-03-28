@@ -48,8 +48,8 @@ fun main(args: Array<String>) {
     }
 
     points.add(LogPoint(testName, CONTACTS_BOOKS_FILLED))
-    books.forEach { mainBook ->
-        mainBook.forEachIndexed { i, contact ->
+    for (mainBook in books) {
+        for ((i, contact) in mainBook.withIndex()) {
             val searchIndex = i * 2
             for (book in books) {
 
