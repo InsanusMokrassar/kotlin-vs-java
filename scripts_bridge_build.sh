@@ -7,6 +7,8 @@ source BaseScripts/common_test.sh
 folders=(`extractFolders $@`)
 CALCULATION_TIMES=`extractCalculationTimes $@`
 
+./gradlew --no-daemon clean build clean
+
 echo "Sum of calculations for each test: $CALCULATION_TIMES"
 echo "Chosen folders for tests:"
 
@@ -14,6 +16,8 @@ for i in ${folders[*]}
 do
     printf "    %s\n" $i
 done
+
+echo
 
 export CALCULATION_TIMES
 

@@ -22,12 +22,14 @@ echo
 printf "JVM args: %s\n" "${jvmArgs[*]}"
 printf "Execution args: %s\n" "${testArgs[*]}"
 
+echo
+
 export CALCULATION_TIMES
 
 if [ "$skipPackage" == "$FALSE" ]
 then
     echo Build project
-    assert_success ./gradlew clean build >> /dev/null
+    assert_success ./gradlew --daemon clean build >> /dev/null
     echo Build completed
 else
     echo Skip build
@@ -37,7 +39,8 @@ pwdir=`pwd`
 
 points_results=()
 
-export JAVA_OPTS="${jvmArgs[*]}"
+# -XX:-AggressiveOpts will disable default optimizations
+export JAVA_OPTS="${jvmArgs[*]} -XX:-AggressiveOpts"
 
 for i in ${!folders[*]}
 do
@@ -47,7 +50,7 @@ do
 
     for ((n=0; n < $CALCULATION_TIMES; n++))
     do
-        output="`./gradlew --no-daemon $folder:run -Pargs=\"${testArgs[*]}\"`"
+        output="`./gradlew $folder:run -Pargs=\"${testArgs[*]}\"`"
         current_folder_results[n]="`echo $output | grep -o "[^[:space:]]*:[0-9]*:[^[:space:]]*"`"
     done
 
