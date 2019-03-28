@@ -48,17 +48,17 @@ fun main(args: Array<String>) {
     }
 
     points.add(LogPoint(testName, CONTACTS_BOOKS_FILLED))
-    books.firstOrNull() ?.let {
-        mainBook ->
-        mainBook.forEachIndexed {
-            i, contact ->
+    books.forEach { mainBook ->
+        mainBook.forEachIndexed { i, contact ->
+            val searchIndex = i * 2
             for (book in books) {
 
                 if (book != mainBook) {
-                    if (book.indexOf(contact) > i) {
+                    if (book.indexOf(contact) > searchIndex) {
                         break
                     }
                 }
+
             }
         }
     }

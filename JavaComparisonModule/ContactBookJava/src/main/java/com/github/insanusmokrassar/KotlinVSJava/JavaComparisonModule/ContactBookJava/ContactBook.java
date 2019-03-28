@@ -61,16 +61,16 @@ public class ContactBook {
 
         points.add(new LogPoint(testName, CONTACTS_BOOKS_FILLED));
 
-        if (!books.isEmpty()) {
-            ContactsBook mainBook = books.get(0);
+        for (ContactsBook mainBook : books) {
 
             for (int i = 0; i < mainBook.size(); i++) {
+                Integer searchIndex = i * 2;
                 Contact contact = mainBook.get(i);
 
                 for (ContactsBook book : books) {
 
                     if (!book.equals(mainBook)) {
-                        if (book.indexOf(contact) > i) {
+                        if (book.indexOf(contact) > searchIndex) {
                             break;
                         }
                     }
