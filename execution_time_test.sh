@@ -50,7 +50,7 @@ do
 
     for ((n=0; n < $CALCULATION_TIMES; n++))
     do
-        output="`./gradlew $folder:run -Pargs=\"${testArgs[*]}\"`"
+        output="`./gradlew $folder:run --args=\"${testArgs[*]}\"`"
         current_folder_results[n]="`echo $output | grep -o "[^[:space:]]*:[0-9]*:[^[:space:]]*"`"
     done
 
