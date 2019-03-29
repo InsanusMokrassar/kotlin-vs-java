@@ -6,13 +6,13 @@ import java.lang.Exception
 import java.util.ArrayList
 import java.util.Random
 
-val random = Random()
 
+val random = Random()
 private val testName = "QuickSort.Kotlin"
 private const val countOfElements = 1000
 
-
 fun main(args: Array<String>) {
+
     val countOfElements = try {
         args[0].toInt()
     } catch (e: Exception) {
