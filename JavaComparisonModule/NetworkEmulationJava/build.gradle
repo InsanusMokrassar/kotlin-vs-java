@@ -12,8 +12,11 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'application'
 
+mainClassName="${project.group}.${project.name}.NetworkEmulation"
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
 dependencies {
   implementation project(":report_formatter")
 }
-
-mainClassName="${project.group}.${project.name}.NetworkEmulation"

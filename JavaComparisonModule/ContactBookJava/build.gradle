@@ -1,9 +1,6 @@
 project.version = "1.0.0"
 project.group = "com.github.insanusmokrassar.KotlinVSJava.JavaComparisonModule"
 
-apply plugin: 'java'
-apply plugin: 'application'
-
 buildscript {
   repositories {
     mavenLocal()
@@ -12,8 +9,14 @@ buildscript {
   }
 }
 
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName="${project.group}.${project.name}.ContactBook"
+
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
+
 dependencies {
   implementation project(":report_formatter")
 }
-
-mainClassName="${project.group}.${project.name}.ContactBook"

@@ -7,7 +7,7 @@ source BaseScripts/common_test.sh
 folders=(`extractFolders $@`)
 CALCULATION_TIMES=`extractCalculationTimes $@`
 
-./gradlew --no-daemon clean build clean
+assert_success ./gradlew --no-daemon clean build clean
 
 echo "Sum of calculations for each test: $CALCULATION_TIMES"
 echo "Chosen folders for tests:"
