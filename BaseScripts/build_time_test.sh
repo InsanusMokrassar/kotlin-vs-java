@@ -7,8 +7,10 @@ function runTests() {
 
     result=()
 
+    assert_success ./gradlew clean build >> /dev/null 2> /dev/null
+
     for ((i=0; i<CALCULATION_TIMES ; i++)); do
-        result[i]=`(echo $(assert_success ./gradlew --no-daemon $TEST_FOLDER:clean $TEST_FOLDER:build | grep -o "BUILD SUCCESSFUL in [[:digit:]]*s") | grep -o [[:digit:]]*)`
+        result[i]=`(echo $(assert_success ./gradlew $TEST_FOLDER:clean $TEST_FOLDER:build | grep -o "BUILD SUCCESSFUL in [[:digit:]]*s") | grep -o [[:digit:]]*)`
     done
 
     echo ${result[*]}
