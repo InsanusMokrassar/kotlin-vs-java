@@ -3,11 +3,12 @@ package com.github.insanusmokrassar.KotlinVSJava.JavaComparisonModule.NetworkEmu
 public class NetworkImpl implements Network {
     private final long defaultDelay;
 
-    public NetworkImpl() {
-        defaultDelay = 1000L;
-    }
     public NetworkImpl(long defaultDelay) {
         this.defaultDelay = defaultDelay;
+    }
+
+    public NetworkImpl() {
+        this(1000L);
     }
 
     @Override
