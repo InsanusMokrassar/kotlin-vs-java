@@ -27,9 +27,7 @@ fun main(args: Array<String>) {
             }
         }.also {
             points.add(LogPoint(testName, ALL_TASKS_CREATED))
-        }.forEach {
-            it.await()
-        }
+        }.awaitAll()
         points.add(LogPoint(testName, ALL_TASKS_COMPLETED))
     }
     points.add(LogPoint(testName, COMPLETE_TEST))
