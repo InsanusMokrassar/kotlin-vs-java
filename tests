@@ -1,5 +1,8 @@
 #!/bin/bash
 
+./show_environment_info
+echo
+
 # Common adapted tests
 ./HelloWorld.sh -n 10
 ./QuickSort.sh -n 10 -a 10000

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+./show_environment_info
+echo
+
 # Most important for server running tests
 ./ImageHandling.sh -n 10 -a "`pwd`/test_sprite_images/"
 ./NetworkEmulation.sh -n 3 -jvm-args -Xmx2048m -a 100000

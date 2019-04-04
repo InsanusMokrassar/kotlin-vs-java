@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "CPU info:"
+lscpu
+echo
+
+echo "Memory info:"
+cat /proc/meminfo
+echo
+
+echo "Java environment info:"
+java -XshowSettings -version
