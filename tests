@@ -5,7 +5,7 @@ echo
 
 # Common adapted tests
 ./HelloWorld.sh -n 10
-./QuickSort.sh -n 10 -a 10000
+./QuickSort.sh -n 25 -a 50000
 ./ContactsBook.sh -n 10 --jvm-args -Xmx2048m --jvm-args -Xint -a 50 -a 10000
 
 # Tests which will be better to run on some server
