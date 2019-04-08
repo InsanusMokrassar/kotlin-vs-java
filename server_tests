@@ -10,4 +10,5 @@ echo
 # Tests which can be run on common machine
 ./HelloWorld.sh -n 100
 ./QuickSort.sh -n 100 -a 100000
-./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a "50 1000"
+./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 50 -a 1000
+
