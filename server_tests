@@ -5,9 +5,15 @@ echo
 
 # Most important for server running tests
 ./ImageHandling.sh -n 10 -a "`pwd`/test_sprite_images/"
+./NetworkEmulation.sh -n 3 -jvm-args -Xmx2048m -a 1000
+./NetworkEmulation.sh -n 3 -jvm-args -Xmx2048m -a 10000
 ./NetworkEmulation.sh -n 3 -jvm-args -Xmx2048m -a 100000
 
 # Tests which can be run on common machine
 ./HelloWorld.sh -n 100
+./QuickSort.sh -n 100 -a 1000
+./QuickSort.sh -n 100 -a 10000
 ./QuickSort.sh -n 100 -a 100000
+./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 25 -a 100
+./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 25 -a 1000
 ./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 25 -a 10000
