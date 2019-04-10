@@ -1,9 +1,8 @@
 #!/bin/bash
 
-alias time='/usr/bin/time'
-
-export BUILD_TIME_RESULT_CONTROL_WORDS="RESULT BUILD TIME"
-export BUILD_TIME_RESULT_TEMPLATE="$BUILD_TIME_RESULT_CONTROL_WORDS [[:digit:]]*m[[:digit:]]*s"
+function now() {
+    echo $(($(date +%s%N)/1000000))
+}
 
 function runTests() {
     CALCULATION_TIMES=$1
@@ -12,10 +11,13 @@ function runTests() {
 
     result=()
 
-    assert_success ./gradlew clean build >> /dev/null 2> /dev/null
+    assert_success ./gradlew clean build > /dev/null 2> /dev/null
 
     for ((i=0; i<CALCULATION_TIMES ; i++)); do
-        result[i]=`(echo $(assert_success time -f "%e" ./gradlew $TEST_FOLDER:clean $TEST_FOLDER:build | grep -o "$BUILD_TIME_RESULT_TEMPLATE") | grep -o [[:digit:]]*)`
+        start=`now`
+        assert_success ./gradlew $TEST_FOLDER:clean $TEST_FOLDER:build > /dev/null 2> /dev/null
+        stop=`now`
+        result[i]=$(( $stop - $start ))
     done
 
     echo ${result[*]}
