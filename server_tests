@@ -15,5 +15,5 @@ echo
 ./QuickSort.sh -n 100 -a 10000
 ./QuickSort.sh -n 100 -a 100000
 ./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 25 -a 100
-./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 25 -a 1000
-./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 25 -a 5000
+./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 25 -a 600
+./ContactsBook.sh -n 100 -jvm-args -Xmx2048m -a 25 -a 1100
